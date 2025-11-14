@@ -6,13 +6,77 @@
   <meta name="description" content="Create and download memes with custom text">
   <title>Meme Generator</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Instant DB SDK -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@instantdb/js@latest/dist/index.js"></script>
 </head>
 <body>
   <div class="App">
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+      <div class="nav-brand">
+        <h2>Meme Generator</h2>
+      </div>
+      <div class="nav-links">
+        <button class="nav-link" onclick="showCreateMeme()">Create Meme</button>
+        <button class="nav-link" onclick="showGallery()">Gallery</button>
+        <div id="user-info" style="display: none;">
+          <span id="username-display"></span>
+          <button class="nav-link" onclick="handleLogout()">Logout</button>
+        </div>
+      </div>
+    </nav>
+
     <header class="App-header">
       <h1>Meme Generator</h1>
       <p>Create your perfect meme with custom text</p>
     </header>
+
+    <!-- Auth Section -->
+    <div id="auth-section" class="auth-section">
+      <div class="auth-container">
+        <h2>Welcome to Meme Generator</h2>
+        <p class="auth-subtitle">Please sign in or create an account to start creating memes</p>
+        
+        <div id="auth-message" class="auth-message" style="display: none;"></div>
+        
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+          <h3>Login</h3>
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required>
+          </div>
+          <button type="submit" class="auth-button">Login</button>
+          <a href="#" id="toggle-auth-form" class="toggle-auth-link" onclick="toggleAuthForm(); return false;">Need an account? Sign up</a>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signup-form" class="auth-form" style="display: none;" onsubmit="handleSignup(event)">
+          <h3>Sign Up</h3>
+          <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input type="text" id="signup-username" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" required>
+          </div>
+          <button type="submit" class="auth-button">Sign Up</button>
+          <a href="#" class="toggle-auth-link" onclick="toggleAuthForm(); return false;">Already have an account? Login</a>
+        </form>
+      </div>
+    </div>
+
+    <!-- Create Meme Section -->
+    <div id="create-meme-section" style="display: none;">
     
     <div class="App-container">
       <div class="sidebar">
@@ -88,6 +152,12 @@
             <p class="download-hint">
               Your meme will be saved as a PNG image
             </p>
+            <button id="post-meme-button" class="post-button">
+              Post to Gallery
+            </button>
+            <p class="post-hint">
+              Share your meme with the community
+            </p>
           </div>
         </div>
       </div>
@@ -107,9 +177,63 @@
         </div>
       </div>
     </div>
+
+    <!-- Gallery Section -->
+    <div id="gallery-section" class="gallery-section" style="display: none;">
+      <div class="gallery-header">
+        <h2>Meme Gallery</h2>
+        <p>Browse memes created by the community</p>
+      </div>
+      <div id="gallery-message" class="message" style="display: none;"></div>
+      <div id="gallery-container" class="gallery-container">
+        <!-- Memes will be loaded here -->
+      </div>
+    </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script type="module" src="js/db-init.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/gallery.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Initialize app when DOM is ready
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await initDB();
+        await initAuth();
+        initGallery();
+      } catch (error) {
+        console.error('Error initializing app:', error);
+      }
+    });
+
+    // Navigation functions
+    window.showCreateMeme = function() {
+      document.getElementById('create-meme-section').style.display = 'block';
+      document.getElementById('gallery-section').style.display = 'none';
+    }
+
+    window.showGallery = function() {
+      document.getElementById('create-meme-section').style.display = 'none';
+      document.getElementById('gallery-section').style.display = 'block';
+      if (typeof loadMemes === 'function') {
+        loadMemes();
+      }
+    }
+
+    window.handleLogout = async function() {
+      if (typeof signOut === 'function') {
+        await signOut();
+        if (typeof showMessage === 'function') {
+          showMessage('Logged out successfully', 'success');
+        }
+        showCreateMeme();
+      }
+    }
+  </script>
 </body>
 </html>
 

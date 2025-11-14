@@ -50,6 +50,7 @@ const fontSizeValue = document.getElementById('font-size-value');
 const addTextButton = document.getElementById('add-text-button');
 const textBoxCount = document.getElementById('text-box-count');
 const downloadButton = document.getElementById('download-button');
+const postMemeButton = document.getElementById('post-meme-button');
 
 // Initialize templates
 function initializeTemplates() {
@@ -351,6 +352,57 @@ function downloadMeme() {
   link.click();
 }
 
+// Post meme to gallery
+async function postMemeToGallery() {
+  if (!canvas) {
+    showPostMessage('Please create a meme first', 'error');
+    return;
+  }
+  
+  // Check if user is authenticated
+  if (!isAuthenticated()) {
+    showPostMessage('You must be logged in to post memes', 'error');
+    return;
+  }
+  
+  try {
+    // Convert canvas to base64
+    const imageData = canvas.toDataURL('image/png');
+    
+    // Post to gallery using gallery.js function
+    const result = await postMeme(imageData);
+    
+    if (result.success) {
+      showPostMessage('Meme posted successfully!', 'success');
+      // Optionally switch to gallery view
+      setTimeout(() => {
+        showGallery();
+      }, 1500);
+    }
+  } catch (error) {
+    console.error('Error posting meme:', error);
+    showPostMessage('Failed to post meme: ' + error.message, 'error');
+  }
+}
+
+// Show post message
+function showPostMessage(message, type) {
+  const messageDiv = document.getElementById('post-message') || document.createElement('div');
+  messageDiv.id = 'post-message';
+  messageDiv.className = `post-message ${type}`;
+  messageDiv.textContent = message;
+  messageDiv.style.display = 'block';
+  
+  // Insert after post button if it exists
+  if (postMemeButton && !document.getElementById('post-message')) {
+    postMemeButton.parentNode.insertBefore(messageDiv, postMemeButton.nextSibling);
+  }
+  
+  setTimeout(() => {
+    messageDiv.style.display = 'none';
+  }, 5000);
+}
+
 // Global mouse move handler for dragging
 document.addEventListener('mousemove', (e) => {
   if (!draggedTextBox) return;
@@ -385,6 +437,9 @@ fontSizeSlider.addEventListener('input', (e) => {
 });
 addTextButton.addEventListener('click', addTextBox);
 downloadButton.addEventListener('click', downloadMeme);
+if (postMemeButton) {
+  postMemeButton.addEventListener('click', postMemeToGallery);
+}
 
 // Initialize app
 initializeTemplates();

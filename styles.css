@@ -503,6 +503,380 @@ body {
   font-size: 0.85rem;
 }
 
+/* Navigation Styles */
+.main-nav {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 15px 30px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-brand h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-link {
+  background: transparent;
+  border: 2px solid #4a90e2;
+  color: #4a90e2;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  background: #4a90e2;
+  color: white;
+  transform: translateY(-2px);
+}
+
+#user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#username-display {
+  color: #b0b0b0;
+  font-weight: 500;
+}
+
+/* Auth Section Styles */
+.auth-section {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 40px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #b0b0b0;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form h3 {
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #b0b0b0;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #0f0f0f;
+  border: 2px solid #2a2a2a;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.auth-button {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+  background: linear-gradient(135deg, #5aa0f2 0%, #458acd 100%);
+}
+
+.toggle-auth-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.toggle-auth-link:hover {
+  color: #5aa0f2;
+  text-decoration: underline;
+}
+
+.auth-message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.auth-message.success {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.auth-message.error {
+  background: rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+  border: 1px solid #ff4444;
+}
+
+/* Gallery Styles */
+.gallery-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gallery-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.gallery-header p {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.meme-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.meme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border-color: #4a90e2;
+}
+
+.meme-image-container {
+  width: 100%;
+  background: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meme-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.meme-info {
+  padding: 20px;
+}
+
+.meme-author {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.meme-date {
+  color: #808080;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+}
+
+.meme-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.like-button {
+  background: transparent;
+  border: 2px solid #2a2a2a;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+}
+
+.like-button:hover {
+  border-color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  transform: scale(1.05);
+}
+
+.like-icon {
+  font-size: 1.2rem;
+}
+
+.like-count {
+  font-weight: 600;
+}
+
+.no-memes {
+  text-align: center;
+  padding: 60px 20px;
+  color: #808080;
+  font-size: 1.2rem;
+  grid-column: 1 / -1;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.message.success {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.message.error {
+  background: rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+  border: 1px solid #ff4444;
+}
+
+/* Post Button Styles */
+.post-button {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  margin-top: 15px;
+}
+
+.post-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(135deg, #ff7b7b 0%, #ff6a62 100%);
+}
+
+.post-button:active {
+  transform: translateY(0);
+}
+
+.post-hint {
+  margin-top: 12px;
+  text-align: center;
+  color: #808080;
+  font-size: 0.85rem;
+}
+
+.post-message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-weight: 500;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.post-message.success {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid #4caf50;
+}
+
+.post-message.error {
+  background: rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+  border: 1px solid #ff4444;
+}
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .App-container {
@@ -542,5 +916,30 @@ body {
   .canvas-container {
     padding: 20px;
     min-height: 400px;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .auth-section {
+    padding: 30px 20px;
+    margin: 20px 15px;
+  }
+
+  .gallery-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gallery-header h2 {
+    font-size: 2rem;
   }
 }
