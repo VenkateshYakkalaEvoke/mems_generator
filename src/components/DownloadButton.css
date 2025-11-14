@@ -1,0 +1,35 @@
+.download-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.download-button {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.download-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+}
+
+.download-button:active {
+  transform: translateY(0);
+}
+
+.download-hint {
+  margin-top: 10px;
+  text-align: center;
+  color: #666;
+  font-size: 0.85rem;
+}
+

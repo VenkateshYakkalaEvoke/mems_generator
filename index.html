@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create and download memes with custom text">
+  <title>Meme Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="App">
+    <header class="App-header">
+      <h1>Meme Generator</h1>
+      <p>Create your perfect meme with custom text</p>
+    </header>
+    
+    <div class="App-container">
+      <div class="sidebar">
+        <div class="image-selector">
+          <h2>Select Image</h2>
+          
+          <div class="upload-section">
+            <label for="file-upload" class="upload-button">
+              Upload Image
+            </label>
+            <input
+              id="file-upload"
+              type="file"
+              accept="image/*"
+              style="display: none;"
+            />
+            <p class="upload-status" id="upload-status" style="display: none;">Image uploaded successfully!</p>
+          </div>
+
+          <div class="templates-section">
+            <h3>Or Choose a Template</h3>
+            <div class="templates-grid" id="templates-grid">
+              <!-- Templates will be inserted here by JavaScript -->
+            </div>
+          </div>
+        </div>
+        
+        <div id="text-controls-section" style="display: none;">
+          <div class="text-controls">
+            <h2>Text Controls</h2>
+            
+            <div class="control-group">
+              <label for="font-size">
+                Font Size: <span id="font-size-value">40</span>px
+              </label>
+              <input
+                id="font-size"
+                type="range"
+                min="20"
+                max="100"
+                value="40"
+                class="font-size-slider"
+              />
+              <div class="slider-labels">
+                <span>20px</span>
+                <span>100px</span>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <button id="add-text-button" class="add-text-button">
+                + Add Text Box
+              </button>
+              <p class="text-box-count" id="text-box-count">
+                0 text boxes active
+              </p>
+            </div>
+
+            <div class="instructions">
+              <p class="instruction-title">Tips:</p>
+              <ul>
+                <li>Click and drag to move text boxes</li>
+                <li>Double-click to edit text</li>
+                <li>Click × to remove a text box</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="download-section">
+            <button id="download-button" class="download-button">
+              Download Meme
+            </button>
+            <p class="download-hint">
+              Your meme will be saved as a PNG image
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas-container">
+        <div class="placeholder" id="placeholder">
+          <p>Select an image to get started</p>
+          <p class="placeholder-subtitle">Upload your own or choose a template</p>
+        </div>
+        <div id="canvas-wrapper-container" style="display: none;">
+          <div class="meme-canvas-container">
+            <div class="canvas-wrapper" id="canvas-wrapper">
+              <canvas id="meme-canvas" class="meme-canvas"></canvas>
+              <div id="text-boxes-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
